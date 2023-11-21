@@ -1,0 +1,13 @@
+ # docker-compose.yml
+version: "3.8"
+services:
+  
+  myCv-Database:
+    container_name: bandStack-mongoDB
+    image: mongo:latest
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      #script para inicializar base de datos (crea la bd, tablas, relaciones)
+      - ./init_mongoDB.js:/docker-entrypoint-initdb.d/init_MongoDB.js
